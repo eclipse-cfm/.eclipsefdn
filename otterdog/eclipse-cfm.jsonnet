@@ -9,6 +9,28 @@ orgs.newOrg('technology.cfm', 'eclipse-cfm') {
     },
   },
   _repositories+:: [
+    orgs.newRepo('clearglass') {
+      allow_merge_commit: true,
+      allow_update_branch: false,
+      delete_branch_on_merge: false,
+      description: "ClearGlass is a small authentication plugin for Traefik that allows to authenticate based on token validity and scopes",
+      has_discussions: true,
+      workflows+: {
+        default_workflow_permissions: "write",
+      },
+      webhooks: [
+      ],
+      rulesets: [
+        orgs.newRepoRuleset('Standard') {
+          allows_creations: true,
+          include_refs+: [
+            "~DEFAULT_BRANCH"
+          ],
+          required_pull_request: null,
+          required_status_checks: null,
+        },
+      ],
+    },
     orgs.newRepo('cfm') {
       allow_merge_commit: true,
       allow_update_branch: false,
