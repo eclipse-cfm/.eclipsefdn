@@ -71,6 +71,28 @@ orgs.newOrg('technology.cfm', 'eclipse-cfm') {
         },
       ],
     },
+    orgs.newRepo('jwtlet') {
+      allow_merge_commit: true,
+      allow_update_branch: false,
+      delete_branch_on_merge: false,
+      description: "A JWTlet is a small application performing token exchanged and other related operations",
+      has_discussions: true,
+      workflows+: {
+        default_workflow_permissions: "write",
+      },
+      webhooks: [
+      ],
+      rulesets: [
+        orgs.newRepoRuleset('Standard') {
+          allows_creations: true,
+          include_refs+: [
+            "~DEFAULT_BRANCH"
+          ],
+          required_pull_request: null,
+          required_status_checks: null,
+        },
+      ],
+    },
     orgs.newRepo('planning') {
       description: "Connector Fabric Manager project planning",
       has_discussions: true,
