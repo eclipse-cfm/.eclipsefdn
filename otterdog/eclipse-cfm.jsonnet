@@ -10,6 +10,7 @@ orgs.newOrg('technology.cfm', 'eclipse-cfm') {
   },
   _repositories+:: [
     orgs.newRepo('clearglass') {
+      allow_forking: true,
       allow_merge_commit: true,
       allow_update_branch: false,
       delete_branch_on_merge: false,
@@ -23,6 +24,7 @@ orgs.newOrg('technology.cfm', 'eclipse-cfm') {
       rulesets: [
         orgs.newRepoRuleset('Standard') {
           allows_creations: true,
+          allows_force_pushes: true,
           include_refs+: [
             "~DEFAULT_BRANCH"
           ],
@@ -72,6 +74,7 @@ orgs.newOrg('technology.cfm', 'eclipse-cfm') {
       ],
     },
     orgs.newRepo('jwtlet') {
+      allow_forking: true,
       allow_merge_commit: true,
       allow_update_branch: false,
       delete_branch_on_merge: false,
@@ -85,6 +88,7 @@ orgs.newOrg('technology.cfm', 'eclipse-cfm') {
       rulesets: [
         orgs.newRepoRuleset('Standard') {
           allows_creations: true,
+          allows_force_pushes: true,
           include_refs+: [
             "~DEFAULT_BRANCH"
           ],
