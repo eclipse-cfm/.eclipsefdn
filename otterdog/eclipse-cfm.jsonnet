@@ -9,6 +9,39 @@ orgs.newOrg('technology.cfm', 'eclipse-cfm') {
     },
   },
   _repositories+:: [
+    orgs.newRepo('.github') {
+      allow_rebase_merge: false,
+      allow_update_branch: false,
+      delete_branch_on_merge: false,
+      has_discussions: true,
+      has_wiki: false,
+      squash_merge_commit_title: "PR_TITLE",
+      web_commit_signoff_required: false,
+    },
+    orgs.newRepo('core-platform-distribution') {
+      allow_forking: true,
+      allow_merge_commit: true,
+      allow_update_branch: false,
+      delete_branch_on_merge: false,
+      description: "This Helm chart provides all necessary dataspace components to deploy a multi-tenant dataspace on a kubernetes cluster",
+      has_discussions: true,
+      workflows+: {
+        default_workflow_permissions: "write",
+      },
+      webhooks: [
+      ],
+      rulesets: [
+        orgs.newRepoRuleset('Standard') {
+          allows_creations: true,
+          allows_force_pushes: true,
+          include_refs+: [
+            "~DEFAULT_BRANCH"
+          ],
+          required_pull_request: null,
+          required_status_checks: null,
+        },
+      ],
+    },
     orgs.newRepo('clearglass') {
       allow_forking: true,
       allow_merge_commit: true,
