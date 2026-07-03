@@ -130,6 +130,30 @@ orgs.newOrg('technology.cfm', 'eclipse-cfm') {
         },
       ],
     },
+    orgs.newRepo('platform-images') {
+      allow_forking: true,
+      allow_merge_commit: true,
+      allow_update_branch: false,
+      delete_branch_on_merge: false,
+      description: "Respository for building and storing container images for dataspace components, such as control-plane, ideneity-hub, and other related components",
+      has_discussions: true,
+      workflows+: {
+        default_workflow_permissions: "read",
+      },
+      webhooks: [
+      ],
+      rulesets: [
+        orgs.newRepoRuleset('Standard') {
+          allows_creations: true,
+          allows_force_pushes: true,
+          include_refs+: [
+            "~DEFAULT_BRANCH"
+          ],
+          required_pull_request: null,
+          required_status_checks: null,
+        },
+      ],
+    },
     orgs.newRepo('planning') {
       description: "Connector Fabric Manager project planning",
       has_discussions: true,
