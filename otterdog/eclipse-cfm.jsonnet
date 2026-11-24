@@ -106,6 +106,28 @@ orgs.newOrg('technology.cfm', 'eclipse-cfm') {
         },
       ],
     },
+    orgs.newRepo('cfm-dataspace') {
+      allow_merge_commit: true,
+      description: "The CFM Dataspace repo contains dataspace-specific resources, such as the Tenant Manager and specific agent implementations for the Connector Fabric Manager",
+      allow_update_branch: false,
+      delete_branch_on_merge: false,
+      has_discussions: true,
+      workflows+: {
+        default_workflow_permissions: "read",
+      },
+      webhooks: [
+      ],
+      rulesets: [
+        orgs.newRepoRuleset('Standard') {
+          allows_creations: true,
+          include_refs+: [
+            "~DEFAULT_BRANCH"
+          ],
+          required_pull_request: null,
+          required_status_checks: null,
+        },
+      ],
+    },
     orgs.newRepo('jwtlet') {
       allow_forking: true,
       allow_merge_commit: true,
